@@ -35,7 +35,7 @@ knitr::kable(marital_gss_cat %>%
   count(marital))
 ```
 
-^[Question 1 Done]
+^[Question 1 Complete]
 
 
 
@@ -54,8 +54,13 @@ prop_marital_status = year_marital_counts %>%
 
 
 
+#### Re-Ordering the Levels of Marriage Status
+```{r}
+ordered_prop_marital = prop_marital_status %>%
+  mutate(marital = fct_reorder2(marital, year, prop))
+```
 
-
+^[Question 3 Complete]
 
 
 
