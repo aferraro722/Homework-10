@@ -12,6 +12,7 @@ knitr::opts_chunk$set(echo = TRUE, comment = NA, fig.align = "center", out.width
 library(tidyverse)
 library(knitr)
 library(forcats)
+library(ggplot2)
 
 data("gss_cat")
 
@@ -61,6 +62,20 @@ ordered_prop_marital = prop_marital_status %>%
 ```
 
 ^[Question 3 Complete]
+
+
+
+
+#### Making a Plot of Proportion vs. Year, Colored by Marriage
+```{r}
+ggplot(ordered_prop_marital, 
+       aes(x = year, y = prop, color = marital)) +
+  geom_line()
+```
+
+^[Question 4 Complete]
+
+
 
 
 
