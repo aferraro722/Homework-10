@@ -1,0 +1,45 @@
+---
+title: "Homework 10"
+author: "Anthony Ferraro"
+output: pdf_document
+linkcolor: blue
+urlcolor: blue
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NA, fig.align = "center", out.width = "50%", warning = FALSE, message = FALSE)
+
+library(tidyverse)
+library(knitr)
+library(forcats)
+
+data("gss_cat")
+
+
+theme_set(theme_minimal())
+```
+
+
+#### Combining the Levels of the "Marital" Variable
+```{r}
+marital_gss_cat = gss_cat %>% mutate(
+  marital = fct_collapse(marital,
+                         "Pre-Marriage" = c("Never married"),
+                         "Marriage" = c("Married"),
+                         "Post-Marriage" = c("Separated", "Divorced", "Widowed"),
+                         "Missing" = c("No answer")
+                         )
+  ) 
+
+knitr::kable(marital_gss_cat %>% 
+  count(marital))
+```
+
+^[Question 1 Done]
+
+
+
+
+
+
+
