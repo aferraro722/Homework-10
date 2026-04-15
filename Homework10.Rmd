@@ -39,6 +39,23 @@ knitr::kable(marital_gss_cat %>%
 
 
 
+#### Making a Column of the Proportion of Responses in a Year for Each Marriage Level
+```{r}
+year_marital_counts = marital_gss_cat %>%
+  count(year, marital)
+
+prop_marital_status = year_marital_counts %>%
+  group_by(year) %>%
+  mutate(prop = n / sum(n))
+```
+
+^[Question 2 Complete]
+
+
+
+
+
+
 
 
 
