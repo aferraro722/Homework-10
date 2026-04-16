@@ -112,6 +112,23 @@ date data was.
 
 
 
+#### Making a Bar Plot of Games on Each Day of the Week
+```{r}
+date_lakers = lakers %>%
+  mutate(date_str = as.character(date),
+         date_good = ymd(date_str))
+
+date_lakers %>%
+  distinct(date_good) %>%
+  mutate(weekday = wday(date_good, label = TRUE)) %>%
+  ggplot(aes(x = weekday)) +
+  geom_bar()
+```
+
+^[Question 7 Complete]
+
+
+
 
 
 
