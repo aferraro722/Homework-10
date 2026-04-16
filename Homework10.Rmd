@@ -13,9 +13,10 @@ library(tidyverse)
 library(knitr)
 library(forcats)
 library(ggplot2)
+library(lubridate)
 
 data("gss_cat")
-
+data("lakers")
 
 theme_set(theme_minimal())
 ```
@@ -74,6 +75,45 @@ ggplot(ordered_prop_marital,
 ```
 
 ^[Question 4 Complete]
+
+
+
+
+#### Trying to Convert the Date Integers to Actual Dates
+```{r}
+lakers %>%
+  mutate(date_bad = as_date(date)) %>%
+  select(date, date_bad) %>%
+  head(n = 6) %>% knitr::kable()
+```
+I think this went wrong because R thinks that the date data provided is saying 20,081,028
+days after 1970-01-01.
+
+^[Question 5 Complete]
+
+
+
+
+#### Converting Date to a String and Retrying
+```{r}
+lakers %>%
+  mutate(date_str = as.character(date),
+         date_good = ymd(date_str)) %>%
+  select(date, date_str, date_good) %>%
+  head(n = 6) %>% knitr::kable()
+```
+
+I think this worked because we converted the date column to string
+data and then were able to use "ymd" to tell R what the layout of the
+date data was.
+
+^[Question 6 Complete]
+
+
+
+
+
+
 
 
 
